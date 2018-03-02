@@ -1,28 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   del_mlx.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdeville <mdeville@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mdeville <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/01 13:33:55 by mdeville          #+#    #+#             */
-/*   Updated: 2018/03/02 22:26:51 by mdeville         ###   ########.fr       */
+/*   Created: 2018/03/02 21:14:45 by mdeville          #+#    #+#             */
+/*   Updated: 2018/03/02 21:25:40 by mdeville         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include <stdlib.h>
 #include <mlx.h>
 #include "ft_graphics.h"
-#include "fdf.h"
-#include "mlx_keycode.h"
-#include "ft_printf.h"
 
-int		main()
+void	del_mlx(t_mlx *mlx)
 {
-	t_mlx	mlx;
-
-	if (!init(&mlx, WIDTH, HEIGHT, "FdF"))
-		return (0);
-	mlx_loop(mlx.ptr);
-	return (0);
+	if (!mlx)
+		return ;
+	del_image(mlx->ptr, &mlx->img);
+	mlx->img = NULL;
+	mlx_destroy_window(mlx->ptr, mlx->win);
+	mlx->win = NULL;
 }

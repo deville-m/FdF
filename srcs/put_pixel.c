@@ -1,28 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   put_pixel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdeville <mdeville@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mdeville <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/01 13:33:55 by mdeville          #+#    #+#             */
-/*   Updated: 2018/03/02 22:26:51 by mdeville         ###   ########.fr       */
+/*   Created: 2018/03/02 21:27:27 by mdeville          #+#    #+#             */
+/*   Updated: 2018/03/02 21:57:33 by mdeville         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <mlx.h>
 #include "ft_graphics.h"
-#include "fdf.h"
-#include "mlx_keycode.h"
-#include "ft_printf.h"
 
-int		main()
+int		put_pixel(t_image *img, int x, int y, t_pixel color)
 {
-	t_mlx	mlx;
-
-	if (!init(&mlx, WIDTH, HEIGHT, "FdF"))
+	if (!img || !img->data || x >= img->width || y >= img->height)
 		return (0);
-	mlx_loop(mlx.ptr);
-	return (0);
+	img->data[y][x] = color;
+	return (1);
 }

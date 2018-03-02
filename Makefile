@@ -6,13 +6,13 @@
 #    By: mdeville <mdeville@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 14:57:14 by mdeville          #+#    #+#              #
-#    Updated: 2018/03/01 13:33:42 by mdeville         ###   ########.fr        #
+#    Updated: 2018/03/02 19:07:18 by mdeville         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME=fdf
 CC=clang
-CFLAGS=-Wall -Wextra -Werror -O3
+CFLAGS=-Wall -Wextra -O3
 INCLUDES=-Iincludes/ -Ilibft/includes/
 LIBDIR=libft/
 LDFLAGS=-lmlx -framework OpenGL -framework AppKit
