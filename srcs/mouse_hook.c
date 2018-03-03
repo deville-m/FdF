@@ -1,32 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   mouse_hook.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdeville <mdeville@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mdeville <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/01 13:33:55 by mdeville          #+#    #+#             */
-/*   Updated: 2018/03/03 22:57:52 by mdeville         ###   ########.fr       */
+/*   Created: 2018/03/03 20:52:22 by mdeville          #+#    #+#             */
+/*   Updated: 2018/03/03 20:53:44 by mdeville         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
 #include <mlx.h>
 #include "ft_graphics.h"
-#include "fdf.h"
 #include "mlx_keycode.h"
-#include "ft_printf.h"
 
-int		main()
+int		mouse_hook(int x, int y, void *param)
 {
-	t_mlx	mlx;
-	t_point	a = {0, 0};
-	t_point	b = {1000, 1000};
-	t_pixel	blue = {0, 255, 0, 255};
+	t_mlx			*mlx;
+	static t_pixel	blue = {0, 255, 0, 255};
 
-	if (!init(&mlx, WIDTH, HEIGHT, "FdF") || !init_hooks(&mlx))
+	if (!param)
 		return (0);
-	put_line(mlx.img, a, b, blue);
-	mlx_loop(mlx.ptr);
-	return (0);
+	mlx = (t_mlx *)param;
+	if (mlx->mouse[BUT1_KEY] && put_pixel(mlx->img, x, y, blue))
+		mlx_put_image_to_window(mlx->ptr, mlx->win, mlx->img->ptr, 0, 0);
+	return (1);
 }

@@ -6,12 +6,13 @@
 /*   By: mdeville <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/02 22:03:41 by mdeville          #+#    #+#             */
-/*   Updated: 2018/03/03 14:47:01 by mdeville         ###   ########.fr       */
+/*   Updated: 2018/03/03 21:03:27 by mdeville         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <mlx.h>
 #include "ft_graphics.h"
+#include "memory.h"
 #include "ft_printf.h"
 
 int		init(t_mlx *mlx, int width, int height, char *name)
@@ -32,5 +33,7 @@ int		init(t_mlx *mlx, int width, int height, char *name)
 		mlx_destroy_window(mlx->ptr, mlx->win);
 		return (0);
 	}
+	ft_bzero(mlx->keyboard, sizeof(mlx->keyboard));
+	ft_bzero(mlx->mouse, sizeof(mlx->mouse));
 	return (1);
 }

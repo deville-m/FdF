@@ -1,0 +1,94 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   put_line.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mdeville <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/03/03 21:47:03 by mdeville          #+#    #+#             */
+/*   Updated: 2018/03/03 22:52:59 by mdeville         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "ft_graphics.h"
+
+static void		put_line_high(t_image *img, t_point a, t_point b, t_pixel color)
+{
+	t_point	d;
+	int		xi;
+	int		D;
+
+	d.x = b.x - a.x;
+	d.y = b.y - a.y;
+	xi = 1;
+	if (d.x < 0)
+	{
+		xi = -1;
+		d.x = -d.x;
+	}
+	D = 2 * d.x - d.y;
+	while (a.y < b.y)
+	{
+		put_pixel(img, a, color);
+		if (D > 0)
+		{
+			a.x += xi;
+			D -= 2 * d.y;
+		}
+		D += 2 * d.x;
+		a.y += 1;
+	}
+}
+
+static void		put_line_low(t_image *img, t_point a, t_point b, t_pixel color)
+{
+	t_point	d;
+	int		yi;
+	int		D;
+
+	d.x = b.x - a.x;
+	d.y = b.y - a.y;
+	yi = 1;
+	if (d.y < 0)
+	{
+		yi = -1;
+		d.y = -d.y;
+	}
+	D = 2 * d.y - d.x;
+	while (a.x < b.x)
+	{
+		put_pixel(img, a, color);
+		if (D > 0)
+		{
+			a.y += yi;
+			D -= 2 * d.x;
+		}
+		D += 2 * d.y;
+		a.x += 1;
+	}
+}
+
+void			put_line(t_image *img, t_point a, t_point b, t_pixel color)
+{
+	int	dist_y;
+	int	dist_x;
+
+	dist_y = b.y - a.y;
+	dist_y *= dist_y;
+	dist_x = b.x - a.x;
+	dist_x *= dist_x;
+	if (dist_y < dist_x)
+	{
+		if (a.x > b.x)
+			put_line_low(img, b, a, color);
+		else
+			put_line_low(img, a, b, color);
+	}
+	else
+	{
+		if (a.y > b.y)
+			put_line_high(img, b, a, color);
+		else
+			put_line_high(img, a, b, color);
+	}
+}

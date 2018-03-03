@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
+/*   mouse_release.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdeville <mdeville@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mdeville <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/01 14:34:43 by mdeville          #+#    #+#             */
-/*   Updated: 2018/03/03 20:54:26 by mdeville         ###   ########.fr       */
+/*   Created: 2018/03/03 20:26:08 by mdeville          #+#    #+#             */
+/*   Updated: 2018/03/03 20:33:01 by mdeville         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF_H
-# define FDF_H
+#include "ft_graphics.h"
 
-# define WIDTH 1920
-# define HEIGHT 1080
-
-int		mouse_press(int button, int x, int y, void *param);
-int		mouse_release(int button, int x, int y, void *param);
-int		mouse_hook(int x, int y, void *param);
-
-#endif
+int	mouse_release(int button, int x, int y, void *param)
+{
+	(void)x;
+	(void)y;
+	if (!param)
+		return (0);
+	((t_mlx *)param)->mouse[button] = 0;
+	return (1);
+}

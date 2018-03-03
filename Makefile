@@ -6,25 +6,30 @@
 #    By: mdeville <mdeville@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 14:57:14 by mdeville          #+#    #+#              #
-#    Updated: 2018/03/03 14:46:20 by mdeville         ###   ########.fr        #
+#    Updated: 2018/03/03 22:53:59 by mdeville         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME=fdf
 CC=clang
-CFLAGS=-Wall -Wextra -O3
+CFLAGS=-Wall -Wextra -O3 -fsanitize=address
 INCLUDES=-Iincludes/ -Ilibft/includes/
 LIBDIR=libft/
 LDFLAGS=-lmlx -framework OpenGL -framework AppKit
 
 LIB=$(addprefix $(LIBDIR), libft.a)
-SRC=	srcs/main.c \
-		srcs/init.c \
-		srcs/del_image.c \
-		srcs/del_mlx.c \
+SRC=	srcs/ft_graphics/init.c \
+		srcs/ft_graphics/del_image.c \
+		srcs/ft_graphics/del_mlx.c \
+		srcs/ft_graphics/new_image.c \
+		srcs/ft_graphics/put_pixel.c \
+		srcs/ft_graphics/put_line.c \
+		srcs/ft_graphics/init_hooks.c \
+		srcs/ft_graphics/exit_x.c \
 		srcs/main.c \
-		srcs/new_image.c \
-		srcs/put_pixel.c
+		srcs/mouse_press.c \
+		srcs/mouse_release.c \
+		srcs/mouse_hook.c
 
 OBJ=$(SRC:.c=.o)
 

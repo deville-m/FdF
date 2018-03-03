@@ -6,10 +6,11 @@
 /*   By: mdeville <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/02 20:50:40 by mdeville          #+#    #+#             */
-/*   Updated: 2018/03/02 21:53:01 by mdeville         ###   ########.fr       */
+/*   Updated: 2018/03/03 17:05:23 by mdeville         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
 #include <mlx.h>
 #include <stdlib.h>
 #include "ft_graphics.h"
@@ -19,12 +20,12 @@ static t_pixel **reshape(char *data, int size_line, int height)
 	t_pixel	**tmp;
 	int		i;
 
-	if (!(tmp = (t_pixel **)malloc(sizeof(t_pixel *))))
+	if (!(tmp = (t_pixel **)malloc(sizeof(t_pixel *) * height)))
 		return (NULL);
 	i = 0;
 	while (i < height)
 	{
-		tmp[i] = (t_pixel *)data + i * size_line;
+		tmp[i] = (t_pixel *)(data + i * size_line);
 		++i;
 	}
 	return (tmp);
