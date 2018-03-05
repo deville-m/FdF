@@ -6,17 +6,21 @@
 /*   By: mdeville <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/03 21:47:03 by mdeville          #+#    #+#             */
-/*   Updated: 2018/03/03 22:52:59 by mdeville         ###   ########.fr       */
+/*   Updated: 2018/03/05 19:33:53 by mdeville         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_graphics.h"
 
-static void		put_line_high(t_image *img, t_point a, t_point b, t_pixel color)
+static void		put_line_high(
+							t_image *img,
+							t_2Dvector a,
+							t_2Dvector b,
+							t_pixel color)
 {
-	t_point	d;
-	int		xi;
-	int		D;
+	t_2Dvector	d;
+	int			xi;
+	int			diff;
 
 	d.x = b.x - a.x;
 	d.y = b.y - a.y;
@@ -26,25 +30,29 @@ static void		put_line_high(t_image *img, t_point a, t_point b, t_pixel color)
 		xi = -1;
 		d.x = -d.x;
 	}
-	D = 2 * d.x - d.y;
-	while (a.y < b.y)
+	diff = 2 * d.x - d.y;
+	while (a.y <= b.y)
 	{
 		put_pixel(img, a, color);
-		if (D > 0)
+		if (diff > 0)
 		{
 			a.x += xi;
-			D -= 2 * d.y;
+			diff -= 2 * d.y;
 		}
-		D += 2 * d.x;
+		diff += 2 * d.x;
 		a.y += 1;
 	}
 }
 
-static void		put_line_low(t_image *img, t_point a, t_point b, t_pixel color)
+static void		put_line_low(
+							t_image *img,
+							t_2Dvector a,
+							t_2Dvector b,
+							t_pixel color)
 {
-	t_point	d;
-	int		yi;
-	int		D;
+	t_2Dvector	d;
+	int			yi;
+	int			diff;
 
 	d.x = b.x - a.x;
 	d.y = b.y - a.y;
@@ -54,21 +62,25 @@ static void		put_line_low(t_image *img, t_point a, t_point b, t_pixel color)
 		yi = -1;
 		d.y = -d.y;
 	}
-	D = 2 * d.y - d.x;
-	while (a.x < b.x)
+	diff = 2 * d.y - d.x;
+	while (a.x <= b.x)
 	{
 		put_pixel(img, a, color);
-		if (D > 0)
+		if (diff > 0)
 		{
 			a.y += yi;
-			D -= 2 * d.x;
+			diff -= 2 * d.x;
 		}
-		D += 2 * d.y;
+		diff += 2 * d.y;
 		a.x += 1;
 	}
 }
 
-void			put_line(t_image *img, t_point a, t_point b, t_pixel color)
+void			put_line(
+						t_image *img,
+						t_2Dvector a,
+						t_2Dvector b,
+						t_pixel color)
 {
 	int	dist_y;
 	int	dist_x;

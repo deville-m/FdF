@@ -6,7 +6,7 @@
 /*   By: mdeville <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/03 20:46:42 by mdeville          #+#    #+#             */
-/*   Updated: 2018/03/03 21:28:08 by mdeville         ###   ########.fr       */
+/*   Updated: 2018/03/05 19:30:01 by mdeville         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 #include "ft_graphics.h"
 #include "mlx_keycode.h"
 #include "ft_printf.h"
-
 
 int		init_hooks(t_mlx *mlx)
 {

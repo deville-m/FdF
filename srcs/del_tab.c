@@ -1,25 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   del_mlx.c                                          :+:      :+:    :+:   */
+/*   del_tab.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdeville <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/02 21:14:45 by mdeville          #+#    #+#             */
-/*   Updated: 2018/03/05 21:54:11 by mdeville         ###   ########.fr       */
+/*   Created: 2018/03/05 17:00:12 by mdeville          #+#    #+#             */
+/*   Updated: 2018/03/05 18:21:22 by mdeville         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include <mlx.h>
-#include "ft_graphics.h"
+#include "ft_printf.h"
 
-void	del_mlx(t_mlx *mlx)
+void	del_tab(void **tab)
 {
-	if (!mlx)
+	void **tab2;
+
+	tab2 = tab;
+	if (!tab)
 		return ;
-	del_image(mlx->ptr, &mlx->img);
-	mlx->img = NULL;
-	mlx_destroy_window(mlx->ptr, mlx->win);
-	mlx->win = NULL;
+	while (*tab)
+		free(*tab++);
+	free(tab2);
 }

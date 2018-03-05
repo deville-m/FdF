@@ -6,7 +6,7 @@
 /*   By: mdeville <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/02 20:50:40 by mdeville          #+#    #+#             */
-/*   Updated: 2018/03/03 17:05:23 by mdeville         ###   ########.fr       */
+/*   Updated: 2018/03/05 19:30:45 by mdeville         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <stdlib.h>
 #include "ft_graphics.h"
 
-static t_pixel **reshape(char *data, int size_line, int height)
+static t_pixel	**reshape(char *data, int size_line, int height)
 {
 	t_pixel	**tmp;
 	int		i;
@@ -31,7 +31,7 @@ static t_pixel **reshape(char *data, int size_line, int height)
 	return (tmp);
 }
 
-t_image		*new_image(void *mlx_ptr, int width, int height)
+t_image			*new_image(void *mlx_ptr, int width, int height)
 {
 	t_image	*new;
 	char	*tmp;
