@@ -6,7 +6,7 @@
 #    By: mdeville <mdeville@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 14:57:14 by mdeville          #+#    #+#              #
-#    Updated: 2018/03/05 21:34:46 by mdeville         ###   ########.fr        #
+#    Updated: 2018/03/06 14:51:09 by mdeville         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,8 @@ SRC=	srcs/ft_graphics/init.c \
 		srcs/ft_graphics/put_line.c \
 		srcs/ft_graphics/init_hooks.c \
 		srcs/ft_graphics/exit_x.c \
+		srcs/print_x_map.c \
+		srcs/free_line.c \
 		srcs/print_map.c \
 		srcs/parse.c \
 		srcs/del_tab.c \

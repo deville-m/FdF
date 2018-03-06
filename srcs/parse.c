@@ -6,12 +6,13 @@
 /*   By: mdeville <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 13:39:11 by mdeville          #+#    #+#             */
-/*   Updated: 2018/03/05 20:04:07 by mdeville         ###   ########.fr       */
+/*   Updated: 2018/03/06 13:50:50 by mdeville         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include <stdlib.h>
+#include "ft_ctype.h"
 #include "ft_printf.h"
 #include "conversion.h"
 #include "ft_string.h"
@@ -19,10 +20,30 @@
 #include "dlst.h"
 #include "get_next_line.h"
 
-static void		free_line(void *data, size_t content_size)
+
+static int		valid_int(char *str)
 {
-	(void)content_size;
-	free(data);
+	int neg;
+	int i;
+
+	neg = 0;
+	if (*str == '-')
+	{
+		str++;
+		neg = 1;
+	}
+	i = 0;
+	while (ft_isdigit(str[i]))
+		++i;
+	if (i > 10)
+		return (0);
+	if (i == 10)
+	{
+		if (neg)
+			return (ft_strcmp(str, "2147483648") <= 0);
+		return (ft_strcmp(str, "2147483647") <= 0);
+	}
+	return (1);
 }
 
 static int		*parse_split(char **split, int size, int max)
@@ -38,6 +59,8 @@ static int		*parse_split(char **split, int size, int max)
 	i = 0;
 	while (i < size && split[i])
 	{
+		if (!valid_int(split[i]))
+			break ;
 		res[i] = ft_atoi(split[i]);
 		++i;
 	}

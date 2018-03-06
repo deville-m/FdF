@@ -6,12 +6,19 @@
 /*   By: mdeville <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/02 20:52:55 by mdeville          #+#    #+#             */
-/*   Updated: 2018/03/05 22:41:52 by mdeville         ###   ########.fr       */
+/*   Updated: 2018/03/06 15:41:28 by mdeville         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_GRAPHICS_H
 # define FT_GRAPHICS_H
+
+typedef struct			s_3Dvector
+{
+	int					x;
+	int					y;
+	int					z;
+}						t_3Dvector;
 
 typedef struct			s_2Dvector
 {
