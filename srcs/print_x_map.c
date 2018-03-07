@@ -6,7 +6,7 @@
 /*   By: mdeville <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/06 14:02:08 by mdeville          #+#    #+#             */
-/*   Updated: 2018/03/06 19:03:54 by mdeville         ###   ########.fr       */
+/*   Updated: 2018/03/07 20:50:57 by mdeville         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,31 +14,26 @@
 #include <mlx.h>
 #include "fdf.h"
 #include "ft_graphics.h"
+#include "ft_printf.h"
 
-static t_2Dvector	project_point(int x, int y, int z, t_conf *conf)
+static t_2Dvector	project_point(double x, double y, double z, t_conf *conf)
 {
 	t_2Dvector	res;
-	double		tmpx;
-	double		tmpy;
-	int			alpha;
-	int			beta;
 
-	alpha = conf->angle.x;
-	beta = conf->angle.y;
-	tmpx = x * cos(beta) - z * sin(beta);
-	tmpy = y * cos(alpha) + z * cos(beta) * sin(alpha) + x * sin(alpha) * cos(beta);
-	tmpx *= conf->scale.x;
-	tmpy *= conf->scale.y;
-	res.x = (int)tmpx + conf->pad.x;
-	res.y = (int)tmpy + conf->pad.y;
+	res.x = cos(conf->angle.y) * x + sin(conf->angle.y) * z;
+	z = -sin(conf->angle.y) * x + cos(conf->angle.y) * z;
+	res.y = cos(conf->angle.x) * y + cos(conf->angle.x) * z;
+	res.x *= conf->scale.x;
+	res.y *= conf->scale.y;
+	res.x += conf->pad.x;
+	res.y += conf->pad.y;
 	return (res);
 }
 
 void				print_x_map(
 								t_mlx *mlx,
-								int **map,
-								t_conf *conf,
-								t_pixel color)
+								double **map,
+								t_conf *conf)
 {
 	int i;
 	int j;
@@ -52,19 +47,22 @@ void				print_x_map(
 		while (j < conf->dim.x)
 		{
 			a = project_point(j, i, map[i][j], conf);
-			if (j != conf->dim.x - 1)
+			if (j < conf->dim.x - 1)
 			{
 				b = project_point(j + 1, i, map[i][j + 1], conf);
-				put_line(mlx->img, a, b, color);
+				put_line(mlx->img, a, b, conf->color);
 			}
-			if (i != conf->dim.y - 1)
+			if (i < conf->dim.y - 1)
 			{
-				b = project_point(i + 1, j, map[i + 1][j], conf);
-				put_line(mlx->img, a, b, color);
+				b = project_point(j, i + 1, map[i + 1][j], conf);
+				put_line(mlx->img, a, b, conf->color);
 			}
 			++j;
 		}
 		++i;
 	}
 	mlx_put_image_to_window(mlx->ptr, mlx->win, mlx->img->ptr, 0, 0);
+	mlx_string_put(mlx->ptr, mlx->win, 50, 50, conf->color.color & 0x00FF0000, "R");
+	mlx_string_put(mlx->ptr, mlx->win, 65, 50, conf->color.color & 0x0000FF00, "G");
+	mlx_string_put(mlx->ptr, mlx->win, 80, 50, conf->color.color & 0x000000FF, "B");
 }

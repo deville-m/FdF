@@ -6,7 +6,7 @@
 /*   By: mdeville <mdeville@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/01 13:33:55 by mdeville          #+#    #+#             */
-/*   Updated: 2018/03/06 18:48:13 by mdeville         ###   ########.fr       */
+/*   Updated: 2018/03/07 19:21:03 by mdeville         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,11 @@
 t_conf	*get_conf(void)
 {
 	static t_conf conf = {
-						{0, 0},
+						{0., 0.},
 						{10, 10},
-						{35, 45},
+						{35., 45.},
 						{WIDTH / 2, HEIGHT / 2},
+						{.color = 0xeb7141}
 						};
 
 	return (&conf);
@@ -35,7 +36,6 @@ int		main(int argc, char **argv)
 	t_mlx		mlx;
 	t_conf		*conf;
 	int			fd;
-	t_pixel		color;
 
 	if (!init(&mlx, WIDTH, HEIGHT, "FdF") || !init_hooks(&mlx))
 		return (0);
@@ -51,9 +51,8 @@ int		main(int argc, char **argv)
 			exit_x(&mlx);
 		close(fd);
 	}
-	color.color = 0X000000FF;
-	print_map(mlx.alloced, conf->dim.x);
-	print_x_map(&mlx, mlx.alloced, conf, color);
+//	print_map(mlx.alloced, conf->dim.x);
+	print_x_map(&mlx, mlx.alloced, conf);
 	mlx_loop(mlx.ptr);
 	return (0);
 }

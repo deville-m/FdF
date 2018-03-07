@@ -6,7 +6,7 @@
 #    By: mdeville <mdeville@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 14:57:14 by mdeville          #+#    #+#              #
-#    Updated: 2018/03/06 14:51:09 by mdeville         ###   ########.fr        #
+#    Updated: 2018/03/07 19:38:01 by mdeville         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ SRC=	srcs/ft_graphics/init.c \
 		srcs/ft_graphics/del_image.c \
 		srcs/ft_graphics/del_mlx.c \
 		srcs/ft_graphics/new_image.c \
+		srcs/ft_graphics/clear_image.c \
 		srcs/ft_graphics/put_pixel.c \
 		srcs/ft_graphics/put_line.c \
 		srcs/ft_graphics/init_hooks.c \
@@ -34,6 +35,7 @@ SRC=	srcs/ft_graphics/init.c \
 		srcs/main.c \
 		srcs/mouse_press.c \
 		srcs/mouse_release.c \
+		srcs/key_hook.c \
 		srcs/mouse_hook.c
 
 OBJ=$(SRC:.c=.o)

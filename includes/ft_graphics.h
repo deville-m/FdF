@@ -6,7 +6,7 @@
 /*   By: mdeville <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/02 20:52:55 by mdeville          #+#    #+#             */
-/*   Updated: 2018/03/06 15:41:28 by mdeville         ###   ########.fr       */
+/*   Updated: 2018/03/07 18:43:09 by mdeville         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,15 @@
 
 typedef struct			s_3Dvector
 {
-	int					x;
-	int					y;
-	int					z;
+	double				x;
+	double				y;
+	double				z;
 }						t_3Dvector;
 
 typedef struct			s_2Dvector
 {
-	int					x;
-	int					y;
+	double				x;
+	double				y;
 }						t_2Dvector;
 
 typedef union			u_pixel
@@ -70,6 +70,7 @@ void					put_line(
 								t_2Dvector b,
 								t_pixel color);
 t_image					*new_image(void *mlx_ptr, int height, int width);
+void					clear_image(t_image *img);
 void					del_image(void *mlx_ptr, t_image **img);
 void					del_mlx(t_mlx *mlx);
 int						exit_x(void *param);

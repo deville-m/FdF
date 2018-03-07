@@ -6,7 +6,7 @@
 /*   By: mdeville <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 13:39:11 by mdeville          #+#    #+#             */
-/*   Updated: 2018/03/06 13:50:50 by mdeville         ###   ########.fr       */
+/*   Updated: 2018/03/07 21:03:10 by mdeville         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 #include "fdf.h"
 #include "dlst.h"
 #include "get_next_line.h"
-
 
 static int		valid_int(char *str)
 {
@@ -46,12 +45,12 @@ static int		valid_int(char *str)
 	return (1);
 }
 
-static int		*parse_split(char **split, int size, int max)
+static double	*parse_split(char **split, int size, int max)
 {
 	int		i;
-	int		*res;
+	double	*res;
 
-	if (!(res = (int *)malloc(sizeof(int) * size)))
+	if (!(res = (double *)malloc(sizeof(double) * size)))
 	{
 		del_tab((void **)split);
 		return (NULL);
@@ -61,7 +60,7 @@ static int		*parse_split(char **split, int size, int max)
 	{
 		if (!valid_int(split[i]))
 			break ;
-		res[i] = ft_atoi(split[i]);
+		res[i] = (double)ft_atoi(split[i]);
 		++i;
 	}
 	del_tab((void **)split);
@@ -73,10 +72,10 @@ static int		*parse_split(char **split, int size, int max)
 	return (res);
 }
 
-static int		*parse_line(char *line, t_conf *conf)
+static double	*parse_line(char *line, t_conf *conf)
 {
 	char	**split;
-	int		*res;
+	double	*res;
 	int		i;
 
 	if (!(split = ft_strsplit(line, ' ')))
@@ -98,7 +97,7 @@ static int		*parse_line(char *line, t_conf *conf)
 static t_dlist	*parse_lines(int fd, t_conf *conf)
 {
 	char	*line;
-	int		*tmp;
+	double	*tmp;
 	t_dlist *res;
 	t_dlist	*last;
 
@@ -122,9 +121,9 @@ static t_dlist	*parse_lines(int fd, t_conf *conf)
 	return (res);
 }
 
-int				**parse(int fd, t_conf *conf)
+double			**parse(int fd, t_conf *conf)
 {
-	int		**res;
+	double	**res;
 	t_dlist	*tmp;
 
 	if (!conf || read(fd, 0, 0) == -1)
@@ -134,7 +133,7 @@ int				**parse(int fd, t_conf *conf)
 	if (!(tmp = parse_lines(fd, conf)))
 		return (NULL);
 	conf->dim.y = ft_dlstlen(tmp);
-	if (!(res = (int **)ft_dlst_to_tab(tmp)))
+	if (!(res = (double **)ft_dlst_to_tab(tmp)))
 	{
 		ft_dlstdel(&tmp, free_line);
 		return (NULL);
