@@ -6,35 +6,38 @@
 /*   By: mdeville <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/02 20:52:55 by mdeville          #+#    #+#             */
-/*   Updated: 2018/03/07 18:43:09 by mdeville         ###   ########.fr       */
+/*   Updated: 2018/03/08 15:47:11 by mdeville         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_GRAPHICS_H
 # define FT_GRAPHICS_H
 
-typedef struct			s_3Dvector
+typedef struct			s_3dvector
 {
 	double				x;
 	double				y;
 	double				z;
-}						t_3Dvector;
+}						t_3dvector;
 
-typedef struct			s_2Dvector
+typedef struct			s_2dvector
 {
 	double				x;
 	double				y;
-}						t_2Dvector;
+}						t_2dvector;
+
+struct					s_color
+{
+	unsigned char		b;
+	unsigned char		g;
+	unsigned char		r;
+	unsigned char		a;
+};
 
 typedef union			u_pixel
 {
 	int					color;
-	struct {
-		unsigned char	b;
-		unsigned char	g;
-		unsigned char	r;
-		unsigned char	a;
-	};
+	struct s_color		col;
 }						t_pixel;
 
 typedef struct			s_image
@@ -62,12 +65,12 @@ int						init(t_mlx *mlx, int width, int height, char *name);
 int						init_hooks(t_mlx *mlx);
 int						put_pixel(
 								t_image *img,
-								t_2Dvector p,
+								t_2dvector p,
 								t_pixel color);
 void					put_line(
 								t_image *img,
-								t_2Dvector a,
-								t_2Dvector b,
+								t_2dvector a,
+								t_2dvector b,
 								t_pixel color);
 t_image					*new_image(void *mlx_ptr, int height, int width);
 void					clear_image(t_image *img);

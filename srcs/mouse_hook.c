@@ -6,7 +6,7 @@
 /*   By: mdeville <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/03 20:52:22 by mdeville          #+#    #+#             */
-/*   Updated: 2018/03/08 13:17:55 by mdeville         ###   ########.fr       */
+/*   Updated: 2018/03/08 15:48:53 by mdeville         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 int		mouse_hook(int x, int y, void *param)
 {
 	t_mlx				*mlx;
-	static t_2Dvector	last = {-1, -1};
-	t_2Dvector			curr;
+	static t_2dvector	last = {-1, -1};
+	t_2dvector			curr;
 	t_conf				*conf;
 
 	if (!param)

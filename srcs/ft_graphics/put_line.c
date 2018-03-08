@@ -6,7 +6,7 @@
 /*   By: mdeville <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/03 21:47:03 by mdeville          #+#    #+#             */
-/*   Updated: 2018/03/08 13:27:37 by mdeville         ###   ########.fr       */
+/*   Updated: 2018/03/08 15:48:07 by mdeville         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 static void		put_line_high(
 							t_image *img,
-							t_2Dvector a,
-							t_2Dvector b,
+							t_2dvector a,
+							t_2dvector b,
 							t_pixel color)
 {
-	t_2Dvector	d;
+	t_2dvector	d;
 	int			xi;
 	int			diff;
 
@@ -46,11 +46,11 @@ static void		put_line_high(
 
 static void		put_line_low(
 							t_image *img,
-							t_2Dvector a,
-							t_2Dvector b,
+							t_2dvector a,
+							t_2dvector b,
 							t_pixel color)
 {
-	t_2Dvector	d;
+	t_2dvector	d;
 	int			yi;
 	int			diff;
 
@@ -78,8 +78,8 @@ static void		put_line_low(
 
 void			put_line(
 						t_image *img,
-						t_2Dvector a,
-						t_2Dvector b,
+						t_2dvector a,
+						t_2dvector b,
 						t_pixel color)
 {
 	int	dist_y;

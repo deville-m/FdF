@@ -6,7 +6,7 @@
 /*   By: mdeville <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/06 14:02:08 by mdeville          #+#    #+#             */
-/*   Updated: 2018/03/08 15:31:03 by mdeville         ###   ########.fr       */
+/*   Updated: 2018/03/08 15:48:30 by mdeville         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@
 #include "ft_graphics.h"
 #include "ft_printf.h"
 
-static t_2Dvector	project_point(double x, double y, double z, t_conf *conf)
+static t_2dvector	project_point(double x, double y, double z, t_conf *conf)
 {
-	t_2Dvector	res;
+	t_2dvector	res;
 
 	x -= conf->cen.x;
 	y -= conf->cen.y;
@@ -65,7 +65,7 @@ static inline void	calc_image(t_image *img, double **map, t_conf *conf)
 {
 	int			i;
 	int			j;
-	t_2Dvector	a;
+	t_2dvector	a;
 
 	i = 0;
 	while (i < conf->dim.y)

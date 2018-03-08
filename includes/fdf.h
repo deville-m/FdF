@@ -6,7 +6,7 @@
 /*   By: mdeville <mdeville@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/01 14:34:43 by mdeville          #+#    #+#             */
-/*   Updated: 2018/03/08 15:34:10 by mdeville         ###   ########.fr       */
+/*   Updated: 2018/03/08 15:47:23 by mdeville         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@
 
 typedef struct	s_conf
 {
-	t_2Dvector	dim;
-	t_2Dvector	cen;
-	t_2Dvector	angle;
-	t_2Dvector	pad;
+	t_2dvector	dim;
+	t_2dvector	cen;
+	t_2dvector	angle;
+	t_2dvector	pad;
 	double		scale;
 	double		alt;
 	double		ca;
