@@ -6,13 +6,13 @@
 #    By: mdeville <mdeville@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/26 14:57:14 by mdeville          #+#    #+#              #
-#    Updated: 2018/03/07 19:38:01 by mdeville         ###   ########.fr        #
+#    Updated: 2018/03/08 15:34:51 by mdeville         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME=fdf
 CC=clang
-CFLAGS=-Wall -Wextra -O3 -g
+CFLAGS=-Wall -Wextra -O3
 INCLUDES=-Iincludes/ -Ilibft/includes/
 LIBDIR=libft/
 LDFLAGS=-lmlx -framework OpenGL -framework AppKit
@@ -45,7 +45,7 @@ all: $(NAME)
 $(LIB):
 	$(MAKE) -j8 -C $(LIBDIR)
 
-%.o: %.c
+%.o: %.c includes/fdf.h includes/ft_graphics.h
 	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 $(NAME): $(OBJ) $(LIB)

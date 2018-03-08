@@ -6,7 +6,7 @@
 /*   By: mdeville <mdeville@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/01 14:34:43 by mdeville          #+#    #+#             */
-/*   Updated: 2018/03/07 19:37:38 by mdeville         ###   ########.fr       */
+/*   Updated: 2018/03/08 15:34:10 by mdeville         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,21 @@
 # include <unistd.h>
 # include "ft_graphics.h"
 
-# define WIDTH 1920
-# define HEIGHT 1080
+# define WIDTH 2560
+# define HEIGHT 1440
 
 typedef struct	s_conf
 {
 	t_2Dvector	dim;
-	t_2Dvector	scale;
+	t_2Dvector	cen;
 	t_2Dvector	angle;
 	t_2Dvector	pad;
+	double		scale;
+	double		alt;
+	double		ca;
+	double		cb;
+	double		sa;
+	double		sb;
 	t_pixel		color;
 }				t_conf;
 

@@ -6,7 +6,7 @@
 /*   By: mdeville <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/03 21:47:03 by mdeville          #+#    #+#             */
-/*   Updated: 2018/03/05 19:33:53 by mdeville         ###   ########.fr       */
+/*   Updated: 2018/03/08 13:27:37 by mdeville         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,9 @@ void			put_line(
 	int	dist_y;
 	int	dist_x;
 
+	if ((a.x >= img->width || a.y >= img->height)
+		&& (b.x >= img->width || a.y >= img->height))
+		return ;
 	dist_y = b.y - a.y;
 	dist_y *= dist_y;
 	dist_x = b.x - a.x;

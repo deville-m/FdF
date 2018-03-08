@@ -6,7 +6,7 @@
 /*   By: mdeville <mdeville@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/01 13:33:55 by mdeville          #+#    #+#             */
-/*   Updated: 2018/03/07 19:21:03 by mdeville         ###   ########.fr       */
+/*   Updated: 2018/03/08 15:10:43 by mdeville         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,20 @@
 
 t_conf	*get_conf(void)
 {
-	static t_conf conf = {
-						{0., 0.},
-						{10, 10},
-						{35., 45.},
-						{WIDTH / 2, HEIGHT / 2},
-						{.color = 0xeb7141}
-						};
+	static int		is_init = 0;
+	static t_conf	conf;
 
+	if (!is_init)
+	{
+		conf.angle.x = 35;
+		conf.angle.y = 45;
+		conf.pad.x = WIDTH / 2;
+		conf.pad.y = HEIGHT / 2;
+		conf.scale = 10;
+		conf.alt = 1.;
+		conf.color.color = 0xeb7141;
+		is_init++;
+	}
 	return (&conf);
 }
 
@@ -51,7 +57,6 @@ int		main(int argc, char **argv)
 			exit_x(&mlx);
 		close(fd);
 	}
-//	print_map(mlx.alloced, conf->dim.x);
 	print_x_map(&mlx, mlx.alloced, conf);
 	mlx_loop(mlx.ptr);
 	return (0);

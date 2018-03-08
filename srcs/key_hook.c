@@ -6,7 +6,7 @@
 /*   By: mdeville <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/07 19:17:00 by mdeville          #+#    #+#             */
-/*   Updated: 2018/03/07 20:49:50 by mdeville         ###   ########.fr       */
+/*   Updated: 2018/03/08 14:12:14 by mdeville         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,17 @@
 static int	color_key(int keycode, t_conf *conf)
 {
 	if (keycode == Q_KEY)
-		conf->color.r += 10;
+		conf->color.r += 5;
 	else if (keycode == W_KEY)
-		conf->color.g += 10;
+		conf->color.g += 5;
 	else if (keycode == E_KEY)
-		conf->color.b += 10;
+		conf->color.b += 5;
 	else if (keycode == A_KEY)
-		conf->color.r -= 10;
+		conf->color.r -= 5;
 	else if (keycode == S_KEY)
-		conf->color.g -= 10;
+		conf->color.g -= 5;
 	else if (keycode == D_KEY)
-		conf->color.b -= 10;
+		conf->color.b -= 5;
 	else
 		return (0);
 	return (1);
@@ -51,15 +51,13 @@ static int	move_key(int keycode, t_conf *conf)
 static int	zoom_key(int keycode, t_conf *conf)
 {
 	if (keycode == NKPL_KEY)
-	{
-		conf->scale.x++;
-		conf->scale.y++;
-	}
+		conf->scale += 0.1;
 	else if (keycode == NKMN_KEY)
-	{
-		conf->scale.x--;
-		conf->scale.y--;
-	}
+		conf->scale -= 0.1;
+	else if (keycode == NK6_KEY)
+		conf->alt += 0.1;
+	else if (keycode == NK9_KEY)
+		conf->alt -= 0.1;
 	else
 		return (0);
 	return (1);

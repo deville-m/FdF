@@ -6,7 +6,7 @@
 /*   By: mdeville <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/03 20:52:22 by mdeville          #+#    #+#             */
-/*   Updated: 2018/03/07 21:04:29 by mdeville         ###   ########.fr       */
+/*   Updated: 2018/03/08 13:17:55 by mdeville         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int		mouse_hook(int x, int y, void *param)
 	if (mlx->mouse[1])
 	{
 		conf = get_conf();
-		conf->angle.x += (last.x - curr.x) / 100;
+		conf->angle.x += (last.y - curr.y) / 100;
 		conf->angle.y += (last.x - curr.x) / 100;
 		clear_image(mlx->img);
 		print_x_map(mlx, mlx->alloced, conf);
