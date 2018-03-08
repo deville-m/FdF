@@ -6,7 +6,7 @@
 /*   By: mdeville <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/07 19:17:00 by mdeville          #+#    #+#             */
-/*   Updated: 2018/03/08 15:44:49 by mdeville         ###   ########.fr       */
+/*   Updated: 2018/03/08 15:55:26 by mdeville         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,13 @@ static int	color_key(int keycode, t_conf *conf)
 static int	move_key(int keycode, t_conf *conf)
 {
 	if (keycode == UP_KEY)
-		conf->pad.y -= 10;
-	else if (keycode == DOWN_KEY)
 		conf->pad.y += 10;
+	else if (keycode == DOWN_KEY)
+		conf->pad.y -= 10;
 	else if (keycode == RIGHT_KEY)
-		conf->pad.x += 10;
-	else if (keycode == LEFT_KEY)
 		conf->pad.x -= 10;
+	else if (keycode == LEFT_KEY)
+		conf->pad.x += 10;
 	else
 		return (0);
 	return (1);
@@ -51,13 +51,13 @@ static int	move_key(int keycode, t_conf *conf)
 static int	zoom_key(int keycode, t_conf *conf)
 {
 	if (keycode == NKPL_KEY)
-		conf->scale += 0.1;
+		conf->scale *= 2;
 	else if (keycode == NKMN_KEY)
-		conf->scale -= 0.1;
+		conf->scale /= 2;
 	else if (keycode == NK6_KEY)
-		conf->alt += 0.1;
+		conf->alt *= 2;
 	else if (keycode == NK9_KEY)
-		conf->alt -= 0.1;
+		conf->alt /= 2;
 	else
 		return (0);
 	return (1);
